@@ -10,7 +10,7 @@ elif a == b:
 
 
 
-  score = 75
+score = 75
 
 if score >= 90:
   print("Grade: A")
@@ -41,7 +41,7 @@ elif age >= 65:
 
 
 
-  day = 3
+day = 3
 
 if day == 1:
   print("Monday")

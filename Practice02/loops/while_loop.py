@@ -4,7 +4,7 @@ while i < 6:
   i += 1
 
 
-
+#while break
 i = 1
 while i < 6:
   print(i)
@@ -13,7 +13,7 @@ while i < 6:
   i += 1
 
 
-
+#while_continue
 i = 0
 while i < 6:
   i += 1

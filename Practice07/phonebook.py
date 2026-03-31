@@ -61,19 +61,39 @@ def insert_manual():
 
 def update_contact():
     name = input("Enter name to update: ")
-    new_phone = input("Enter new phone: ")
+    print("1 - update number")
+    print("2 - update name")
+
+    choice = int(input("Choice: "))
 
     conn = connect()
     cur = conn.cursor()
 
-    cur.execute(
-        "UPDATE phonebook SET phone = %s WHERE name = %s",
-        (new_phone, name)
-    )
+    if choice == 1:
+        new_phone = input("Enter new phone: ")
 
+        cur.execute(
+            "UPDATE phonebook SET phone = %s WHERE name = %s",
+            (new_phone, name)
+        )
+
+        print("Contact number updated")
+
+
+    elif choice == 2:
+        new_name = input("Enter new name: ")
+
+        cur.execute(
+            "UPDATE phonebook SET name = %s WHERE name = %s",
+            (new_name, name)
+        )
+
+        print("Contact name updated")
+
+    
     conn.commit()
+    cur.close()
     conn.close()
-    print("Contact updated")
 
 
 def search_contacts():

@@ -1,0 +1,108 @@
+[
+    {
+        "name": "Tony",
+        "email": "tonysoprano00@gmail.com",
+        "birthday": "1959-08-22",
+        "group": "Family",
+        "phones": [
+            {
+                "phone": "883818",
+                "type": "home"
+            },
+            {
+                "phone": "8",
+                "type": "mobile"
+            },
+            {
+                "phone": "878",
+                "type": "work"
+            }
+        ]
+    },
+    {
+        "name": "Darkhab",
+        "email": "darkhan2k8@gmail.com",
+        "birthday": "2008-07-12",
+        "group": "Me",
+        "phones": [
+            {
+                "phone": "874789636067",
+                "type": "mobile"
+            }
+        ]
+    },
+    {
+        "name": "HUlio",
+        "email": "liohu@kaja.com",
+        "birthday": "1999-04-25",
+        "group": "Work",
+        "phones": [
+            {
+                "phone": "8789877",
+                "type": "work"
+            }
+        ]
+    },
+    {
+        "name": "Mike",
+        "email": "mike@yahoo.com",
+        "birthday": "1990-03-10",
+        "group": "Other",
+        "phones": [
+            {
+                "phone": "87007654321",
+                "type": "work"
+            }
+        ]
+    },
+    {
+        "name": "Anna",
+        "email": "anna@gmail.com",
+        "birthday": "1998-09-21",
+        "group": "Friends",
+        "phones": [
+            {
+                "phone": "87001110000",
+                "type": "mobile"
+            }
+        ]
+    },
+    {
+        "name": "Aknazar",
+        "email": "aknazargay@gmail.com",
+        "birthday": "2007-09-18",
+        "group": "Friends",
+        "phones": [
+            {
+                "phone": "87026891555",
+                "type": "mobile"
+            }
+        ]
+    },
+    {
+        "name": "Nurbek",
+        "email": "dakda32@eoa.vo",
+        "birthday": "2008-02-12",
+        "group": "Friends",
+        "phones": [
+            {
+                "phone": "874785656",
+                "type": "home"
+            }
+        ]
+    },
+    {
+        "name": "Fasa",
+        "email": "fasa@email.com",
+        "birthday": "2001-01-08",
+        "group": "Friends",
+        "phones": []
+    },
+    {
+        "name": "Nimo",
+        "email": "nims@mail.ru",
+        "birthday": "0001-01-01",
+        "group": "Friends",
+        "phones": []
+    }
+]

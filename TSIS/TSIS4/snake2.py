@@ -1,0 +1,107 @@
+import pygame, sys, random
+from db import create_tables
+
+pygame.init()
+
+WIDTH, HEIGHT = 600, 600
+CELL = 20
+
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Snake")
+
+clock = pygame.time.Clock()
+
+snake = [(100,100), (80,100), (60,100)]
+direction = (20, 0)
+
+food = (random.randrange(0, WIDTH, CELL), random.randrange(0, HEIGHT, CELL))
+food_value = random.choice([1, 3])
+food_spawn_time = pygame.time.get_ticks()
+food_lifetime = 5000   # 3 секунды
+
+score = 0
+level = 1
+speed = 10
+
+font = pygame.font.SysFont(None, 30)
+
+def generate_food():
+    while True:
+        pos = (random.randrange(0, WIDTH, CELL), random.randrange(0, HEIGHT, CELL))
+        if pos not in snake:
+            return pos
+
+create_tables()
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
+
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP and direction != (0, CELL):
+                direction = (0, -CELL)
+            elif event.key == pygame.K_DOWN and direction != (0, -CELL):
+                direction = (0, CELL)
+            elif event.key == pygame.K_LEFT and direction != (CELL, 0):
+                direction = (-CELL, 0)
+            elif event.key == pygame.K_RIGHT and direction != (-CELL, 0):
+                direction = (CELL, 0)
+
+    head = (snake[0][0] + direction[0], snake[0][1] + direction[1])
+    snake.insert(0, head)
+
+    current_time = pygame.time.get_ticks()
+
+    if current_time - food_spawn_time > food_lifetime:
+        food = generate_food()
+        food_value = random.choice([1, 3])
+        food_spawn_time = current_time
+
+    # проверка границ
+    if head[0] < 0 or head[0] >= WIDTH or head[1] < 0 or head[1] >= HEIGHT:
+        pygame.quit()
+        sys.exit()
+
+    # проверка на саму себя
+    if head in snake[1:]:
+        pygame.quit()
+        sys.exit()
+
+    # если съели еду
+    if head == food:
+        score += food_value
+        food = generate_food()
+
+        food_value = random.choice([1, 3])
+        food_spawn_time = pygame.time.get_ticks()
+        
+
+        # уровни
+        if score % 3 == 0:
+            level += 1
+            speed += 2
+    else:
+        snake.pop()
+
+    screen.fill((0,0,0))
+
+    # рисуем змейку
+    for segment in snake:
+        pygame.draw.rect(screen, (0,255,0), (*segment, CELL, CELL))
+
+    # рисуем еду
+    if food_value == 3:
+        color = (255,255,0)   # жёлтая (дорогая)
+    else:
+        color = (255,0,0)     # обычная
+    
+    pygame.draw.rect(screen, color, (*food, CELL, CELL))
+
+    # текст
+    text = font.render(f"Score: {score}  Level: {level}", True, (255,255,255))
+    screen.blit(text, (10,10))
+
+    pygame.display.flip()
+    clock.tick(speed)
